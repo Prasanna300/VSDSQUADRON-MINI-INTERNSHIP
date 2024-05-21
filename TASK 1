@@ -1,0 +1,16 @@
+VSD SQUADRON MINI INTERNSHIP
+Summer internship under VLSI SYSTEM DESIGN on RISCV-Architecture and about open source eda tools.
+
+
+# TASK-1 INSTALLATION OF VIRTUAL BOX AND SETTING UP UBUNTO.
+We use Oracle VM VirtualBox to run Ubuntu in order to utilize the RISC-V toolchain. The RISC-V instruction set architecture (ISA) is open-source and widely supported in the Linux environment.
+RISCV-Toolchain
+The RISC-V toolchain, which includes compilers, assemblers, linkers, and other development tools, is primarily developed and maintained for Linux-based operating systems like Ubunto.
+This is the RISC-V C and C++ cross-compiler. It supports two build modes: a generic ELF/Newlib toolchain and a more sophisticated Linux-ELF/glibc toolchain.
+These are the commands for installation of riscv Toolchain:-
+
+$ sudo apt-get install autoconf automake autotools-dev curl python3 python3-pip libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev ninja-build git cmake libglib2.0-dev libslirp-dev
+$git clone -- recursive https://github.com/riscv/riscv-gnu-toolchain 
+$./configure --prefix=/opt/riscv
+$ make linux
+$ sudo make linux
