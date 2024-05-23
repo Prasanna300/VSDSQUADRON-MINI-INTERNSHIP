@@ -18,9 +18,9 @@
 
   ![WhatsApp Image 2024-05-23 at 22 51 23_019a2bdd](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/3b2d8ef1-9f00-4b4a-a3b4-637fac83aae7)
 
-   $ riscv64-unknown-elf-objdump -d sum1ton.o
+   * $ riscv64-unknown-elf-objdump -d sum1ton.o
   
- $ riscv64-unknown-elf-objdump -d sum1ton.o | less
+ * $ riscv64-unknown-elf-objdump -d sum1ton.o | less
 
 
 ![WhatsApp Image 2024-05-23 at 22 51 23_91f99058](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/dd79a76d-4b5a-4296-bb99-32cd8b59c73a)
