@@ -30,7 +30,7 @@ Give command to open the C program in terminal
 
 
 
-# task 2
+# TASK - 2
 
 
 
@@ -50,34 +50,35 @@ INSTRUCTION TYPES:
 1. R-Type (Register) Instructions
    
 Used for arithmetic and logical operations.
- * Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+ *  $Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
 
 2. I-Type (Immediate) Instructions
    
 Used for arithmetic operations with immediate values and load instructions.
-*  Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | imm[31:20]
+*   $Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | imm[31:20]
 
 3. S-Type (Store) Instructions
    
 Used for store operations to memory.
-*  Format: opcode[6:0] | imm[4:0] | funct3[14:12] | rs1[19:15] | rs2[24:20] | imm[11:5]
+*   $Format: opcode[6:0] | imm[4:0] | funct3[14:12] | rs1[19:15] | rs2[24:20] | imm[11:5]
 
 4. B-Type (Branch) Instructions
    
 Used for conditional branch operations.
-*  Format: opcode[6:0] | imm[11] | imm[4:1] | funct3[14:12] | rs1[19:15] | rs2[24:20] | imm[10:5] | imm[12]
+*   $Format: opcode[6:0] | imm[11] | imm[4:1] | funct3[14:12] | rs1[19:15] | rs2[24:20] | imm[10:5] | imm[12]
 
   5. U-Type (Upper Immediate) Instructions
      
 Used for instructions that build 32-bit constants and for address calculation.
-*  Format: opcode[6:0] | rd[11:7] | imm[31:12]
+*  $Format: opcode[6:0] | rd[11:7] | imm[31:12]
 
   6. J-Type (Jump) Instructions
 
 Used for jump operations.
-*  Format: opcode[6:0] | rd[11:7] | imm[20|10:1|11|19:12]
+*   $Format: opcode[6:0] | rd[11:7] | imm[20|10:1|11|19:12]
 
 SOME  RISCV INSTRUCTIONS :
+
 add: Adds two registers.
 addi: Adds a register and an immediate value.
 sub: Subtracts two registers.
