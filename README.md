@@ -89,3 +89,101 @@ bne: Branches if two registers are not equal.
 jal: Jumps and links, storing the return address.
 jalr: Jumps and links using a register.
 
+
+
+
+ADD r6, r2, r1
+SUB r7, r1, r2
+AND r8, r1, r3
+OR r9, r2, r5
+XOR r10, r1, r4
+SLT r11, r2, r4
+ADDI r12, r4, 5
+SW r3, r1, 2
+SRL r16, r14, r2
+BNE r0, r1, 20
+BEQ r0, r0, 15
+LW r13, r1, 2
+SLL r15, r1, r2
+
+FOR THESS INSRUCTIONS
+1. ADD r6, r2, r1
+Instruction Type: R-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+Opcode: 0110011
+Funct3: 000
+Funct7: 0000000
+Binary: 0000000 00001 00010 000 00110 0110011
+Hex: 0x002102B3
+2. SUB r7, r1, r2
+Instruction Type: R-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+Opcode: 0110011
+Funct3: 000
+Funct7: 0100000
+Binary: 0100000 00010 00001 000 00111 0110011
+Hex: 0x402081B3
+3. AND r8, r1, r3
+Instruction Type: R-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+Opcode: 0110011
+Funct3: 111
+Funct7: 0000000
+Binary: 0000000 00011 00001 111 01000 0110011
+Hex: 0x0030C2B3
+4. OR r9, r2, r5
+Instruction Type: R-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+Opcode: 0110011
+Funct3: 110
+Funct7: 0000000
+Binary: 0000000 00101 00010 110 01001 0110011
+Hex: 0x005142B3
+5. XOR r10, r1, r4
+Instruction Type: R-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+Opcode: 0110011
+Funct3: 100
+Funct7: 0000000
+Binary: 0000000 00100 00001 100 01010 0110011
+Hex: 0x0040A2B3
+6. SLT r11, r2, r4
+Instruction Type: R-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+Opcode: 0110011
+Funct3: 010
+Funct7: 0000000
+Binary: 0000000 00100 00010 010 01011 0110011
+Hex: 0x004152B3
+7. ADDI r12, r4, 5
+Instruction Type: I-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | imm[31:20]
+Opcode: 0010011
+Funct3: 000
+Immediate: 000000000101
+Binary: 000000000101 00100 000 01100 0010011
+Hex: 0x00520293
+8. SW r3, r1, 2
+Instruction Type: S-Type
+Format: opcode[6:0] | imm[4:0] | funct3[14:12] | rs1[19:15] | rs2[24:20] | imm[11:5]
+Opcode: 0100011
+Funct3: 010
+Immediate: 00010 (split into 00000 and 00010)
+Binary: 000000 00010 00001 010 00011 0100011
+Hex: 0x0020A023
+9. SRL r16, r14, r2
+Instruction Type: R-Type
+Format: opcode[6:0] | rd[11:7] | funct3[14:12] | rs1[19:15] | rs2[24:20] | funct7[31:25]
+Opcode: 0110011
+Funct3: 101
+Funct7: 0000000
+Binary: 0000000 00010 01110 101 10000 0110011
+Hex: 0x00273533
+10. BNE r0, r1, 20
+Instruction Type: B-Type
+Format: opcode[6:0] | imm[11] | imm[4:1] | funct3[14:12] | rs1[19:15] | rs2[24:20] | imm[10:5] | imm[12]
+Opcode: 1100011
+Funct3: 001
+Immediate: 00010100 (split into 00000, 0001, 010, and 0)
+Binary: 0000000 00101 00000 001 00001 1100011
+Hex: 0x01400063
