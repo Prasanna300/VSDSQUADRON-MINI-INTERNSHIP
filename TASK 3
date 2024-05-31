@@ -1,2 +1,74 @@
+TASK 3
+IVERILOG:-Icarus Verilog, commonly referred to as IVerilog, is an open-source Verilog simulation and synthesis tool. It supports a wide range of Verilog standards and is used for designing and testing digital circuits
+
+GTKWAVE:- GTKWave is an open-source waveform viewer used for visualizing simulation results from digital circuit designs. It is commonly used in conjunction with simulation tools like Icarus Verilog
+
+STEP 1 : To install verilog
+
+ $ sudo apt install iverilog
+WhatsApp Image 2024-05-31 at 22 52 51_ebeaf265
+
+STEP 2: TO INSTALL GTKWAVE
+
+$sudo apt install iverilog gtkwave
+WhatsApp Image 2024-05-31 at 22 55 38_aea4ab17
+
+STEP 3 : cloning
+ $git clone https://github.com/Harshit2747/vsdsquadron-mini-internship
+ $ cd vsdsquadron-mini-internship
+WhatsApp Image 2024-05-31 at 22 58 40_11eb65db
+STEP 4: SIMULATION
+$ iverilog -o vsdsquadron-mini-internship Harshit_rv32i.v Harshit_rv32i_tb.v
+ $ ./vsdsquadron-mini-internship
+**WhatsApp Image 2024-05-31 at 23 02 08_05c94f69 **
+5.STEP 5: WAVEFORM
+
+$gtkwave Harshit_rv32i.vcd
+WhatsApp Image 2024-05-31 at 23 02 08_847af15d
+
+FOLLOWING INSTRUCTIONS:
+
+1.ADD r6, r2, r1
+
+2.SUB r7, r1, r2
+
+3.AND r8, r1, r3
+
+4.OR r9, r2, r5
+
+5.XOR r10, r1, r4
+
+6.SLT r11, r2, r4
+
+7.ADDI r12, r4, 5
+
+8.SW r3, r1, 2
+
+9.BEQ r0, r0, 15
+
+$1..ADD r6, r2, r1
+WhatsApp Image 2024-05-31 at 23 06 56_85388c6c
+
+$2.SUB r7, r1, r2
+WhatsApp Image 2024-05-31 at 23 07 55_d559889f
+
+$3.AND r8, r1, r3
+WhatsApp Image 2024-05-31 at 23 09 40_85ba2e1c
+
+ $4.OR r9, r2, r5
+WhatsApp Image 2024-05-31 at 23 11 30_28aa124a
+
+$5.XOR r10, r1, r4
+WhatsApp Image 2024-05-31 at 23 13 21_04791019
+
+ $6.SLT r11, r2, r4
+WhatsApp Image 2024-05-31 at 23 14 05_63fdc7b5
+
+ $7.ADDI r12, r4, 5
+WhatsApp Image 2024-05-31 at 23 14 51_3ab4b444
+
+$8.SW r3, r1, 2
+WhatsApp Image 2024-05-31 at 23 16 00_0c27c5ae
+ $9.BEQ r0, r0, 15
 
 
