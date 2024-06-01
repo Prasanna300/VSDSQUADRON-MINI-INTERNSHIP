@@ -291,18 +291,18 @@ GTKWAVE:- GTKWave is an open-source waveform viewer used for visualizing simulat
   ![WhatsApp Image 2024-05-31 at 22 55 38_aea4ab17](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/03f7e19b-0902-4fe9-a071-97d3d8256e79)
 
   3. STEP 3 : cloning
-*      $git clone https://github.com/Harshit2747/vsdsquadron-mini-internship
+*      $git clone https://github.com/prasanna300/vsdsquadron-mini-internship
 *      $ cd vsdsquadron-mini-internship
   ![WhatsApp Image 2024-05-31 at 22 58 40_11eb65db](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/b39a658f-aa91-4d5d-95cd-74637bda90ce)
 
 4. STEP 4: SIMULATION
-   *     $ iverilog -o vsdsquadron-mini-internship Harshit_rv32i.v Harshit_rv32i_tb.v
+   *     $ iverilog -o vsdsquadron-mini-internship prasanna_rv32i.v prasanna_rv32i_tb.v
 *      $ ./vsdsquadron-mini-internship
   **![WhatsApp Image 2024-05-31 at 23 02 08_05c94f69](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/c8964939-154f-4953-9803-07d98fbd2a8c)
 **
 
 5.STEP 5: WAVEFORM
-*     $gtkwave Harshit_rv32i.vcd
+*     $gtkwave prasanna_rv32i.vcd
 ![WhatsApp Image 2024-05-31 at 23 02 08_847af15d](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/3a2c250b-6ed3-4287-97fb-6498dd288ba3)
 
 
