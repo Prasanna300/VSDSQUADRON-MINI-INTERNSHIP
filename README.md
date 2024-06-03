@@ -357,6 +357,57 @@ FOLLOWING INSTRUCTIONS:
 *      $9.BEQ r0, r0, 15
  ![WhatsApp Image 2024-05-31 at 23 17 16_e51090d2](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/cee40666-8ae2-4a0d-ae03-c5c9a416821c)
 
+
+
+ # TASK 4 :
+
+            Make a mini project on vsdsquadron mini board to understand the board overview
+
+
+            4 BIT RIPPLE CARRY ADDER
+
+
+       A 4-bit ripple carry adder consists of four full adders connected in series. Each full adder computes the sum and carry-out for corresponding bits of two 4-bit binary numbers. The carry-out from each full adder is passed to the carry-in of the next higher-order full adder.
+
+
+Two full adders are cascaded as follows:
+
+FA0 (Least Significant Bit Adder)
+
+Inputs: A0, B0, Cin0 (initial carry-in, typically 0)
+Outputs: S0 (sum bit), Cout0 (carry-out to next stage)
+FA1 (Most Significant Bit Adder)
+
+Inputs: A1, B1, Cin1 (connected to Cout0 of FA0)
+Outputs: S1, Cout1 (final carry-out)
+
+
+ #  COMPONENTS REQUIRED 
+
+ VSDSQUADRON MINI BOARD
+ LEDS
+ BREAD BOARD
+ JUMPER WIRES
+
+ # PINOUT 
+
+ VSDsquadron Mini Board Pinout :
+-------------------------------------------------
+| Pin Number | Function                        |
+|------------|---------------------------------|
+| 1          | A0                              |
+| 2          | A1                              |
+| 3          | B0                              |
+| 4          | B1                              |
+| 5          | Cin (initial carry-in)          |
+| 6          | S0 (Sum output bit 0)           |
+| 7          | S1 (Sum output bit 1)           |
+| 8          |  Cout (final carry-out)         |
+| 9          |  vcc                            |
+| 10         | gnd                             |
+-------------------------------------------------
+
+  
    
 
 
