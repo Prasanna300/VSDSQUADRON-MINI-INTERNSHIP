@@ -416,19 +416,36 @@ Outputs: S1, Cout1 (final carry-out)
 Implementing the 2-bit Ripple Carry Adder on the VSDsquadron Mini Board
 Connecting Inputs:
 
+
+
 A0 to Pin PC1
+
 A1 to Pin PC2
+
 B0 to Pin PC3
+
 B1 to Pin PC4
+
 Cin (initial carry-in) to Pin PC5 (initially tied to LOW/GND if not used for chaining)
+
+
 Power and Ground:
 
+
+
 Connect Pin 10 to GND
+
 Connect Pin 9 to VCC (typically +3.3V or +5V)
+
 Connecting Outputs:
 
+
+
 S0 (Sum output for bit 0) to Pin PD1
+
 S1 (Sum output for bit 1) to Pin PD2
+
+
 Cout (final carry-out) to Pin PD3
 
 
