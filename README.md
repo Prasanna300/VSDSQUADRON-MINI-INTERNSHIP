@@ -361,13 +361,13 @@ FOLLOWING INSTRUCTIONS:
 
  # TASK 4 :
 
-            Make a mini project on vsdsquadron mini board to understand the board overview
+  Make a mini project on vsdsquadron mini board to understand the board overview
 
 
-            4 BIT RIPPLE CARRY ADDER
+  # 2 BIT RIPPLE CARRY ADDER :
+  
 
-
-       A 4-bit ripple carry adder consists of four full adders connected in series. Each full adder computes the sum and carry-out for corresponding bits of two 4-bit binary numbers. The carry-out from each full adder is passed to the carry-in of the next higher-order full adder.
+ A 2-bit ripple carry adder consists of four full adders connected in series. Each full adder computes the sum and carry-out for corresponding bits of two 2-bit binary numbers. The carry-out from each full adder is passed to the carry-in of the next higher-order full adder.
 
 
 Two full adders are cascaded as follows:
@@ -408,13 +408,21 @@ Outputs: S1, Cout1 (final carry-out)
 -------------------------------------------------
 
   
+ # PINOUT DIAGRAM FOR 2 BIT RIPPLE CARRY ADDER :
+
+ 
+
+![ripple carry adder](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/e24e141c-cf27-4bcc-94ce-9327d7e65935)
+
+
+
+ 
 
 
 
 
-
-Implementing the 2-bit Ripple Carry Adder on the VSDsquadron Mini Board
-Connecting Inputs:
+# Implementing the 2-bit Ripple Carry Adder on the VSDsquadron Mini Board
+   Connecting Inputs:
 
 
 
