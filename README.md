@@ -385,9 +385,13 @@ Outputs: S1, Cout1 (final carry-out)
  #  COMPONENTS REQUIRED 
 
  VSDSQUADRON MINI BOARD
+ 
  LEDS
+ 
  BREAD BOARD
+ 
  JUMPER WIRES
+ 
 
  # PINOUT 
 
