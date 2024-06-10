@@ -461,7 +461,7 @@ S1 (Sum output for bit 1) to Pin PD2
 Cout (final carry-out) to Pin PD3
 
 
-
+# TASK 5
 
 # C LANGUAGE CODE OF 2BITS RIPPLE CARRY ADDER :
 
