@@ -461,3 +461,55 @@ S1 (Sum output for bit 1) to Pin PD2
 Cout (final carry-out) to Pin PD3
 
 
+
+
+# C LANGUAGE CODE OF 2BITS RIPPLE CARRY ADDER :
+
+
+
+
+    *     $ #include<stdio.h>
+
+     // Function to perform a single-bit addition
+    void singleBitAdd(int a, int b, int carryIn, int *sum, int *carryOut) {
+    *sum = (a ^ b) ^ carryIn;           // Sum bit
+    *carryOut = (a & b) | (carryIn & (a ^ b)); // Carry bit
+     }
+
+     // Function to perform a 2-bit ripple carry addition
+    void twoBitRippleCarryAdder(int a[2], int b[2], int result[3]) {
+    int carry = 0;
+    int sum;
+    
+    // Add the least significant bit (LSB)
+    singleBitAdd(a[pc1], b[pc3], carry, &sum, &carry);
+    result[pd1] = sum;
+    
+    // Add the most significant bit (MSB)
+    singleBitAdd(a[pc2], b[pc4], carry, &sum, &carry);
+    result[pd2] = sum;
+    
+    // Carry out from the most significant bit addition
+    result[pd3] = carry;
+     }
+
+     int main() {
+    int a[2], b[2], result[3];
+    
+    // Input two 2-bit numbers
+    printf("Enter first 2-bit number (as two separate bits, LSB first): ");
+    scanf("%d %d", &a[pc1], &a[pc2]);
+    printf("Enter second 2-bit number (as two separate bits, LSB first): ");
+    scanf("%d %d", &b[pc3], &b[pc4]);
+    
+    // Perform the addition
+    twoBitRippleCarryAdder(a, b, result);
+    
+    // Print the result
+    printf("Sum: %d%d%d\n", result[pd3], result[pd2], result[pd1]);
+    
+    return 0;
+     }
+
+
+
