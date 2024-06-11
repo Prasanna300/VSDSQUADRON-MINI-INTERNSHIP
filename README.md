@@ -416,7 +416,7 @@ Outputs: S1, Cout1 (final carry-out)
 
  
 
-![ripple carry adder](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/e24e141c-cf27-4bcc-94ce-9327d7e65935)
+![WhatsApp Image 2024-06-11 at 09 31 42_1676f028](https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/f35903b2-32af-40e9-be06-f8e55bd17d5e)
 
 
 
@@ -558,3 +558,41 @@ Cout (final carry-out) to Pin PD3
 
     return 0;
     }
+
+
+
+
+#  WORKING :
+
+
+PD4 :S0 LED CONNECTED WITH WHITE WIERE WILL BLINK WHEN S0 IS 1
+
+
+PD5 :S1 LED CONNECTED WITH GREEN WIRE WILL BLINK WHEN S1 IS 1
+
+
+PD6 :C1 LED CONNECTED WITH RED WIRE WILL BLINK WHEN C1 IS 1
+
+the entire 2bit ripple carry adder runs around this logic 
+
+
+
+   
+        // Iterate over all possible combinations of 2-bit numbers
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                // Set inputs a and b
+                a[0] = i & 1;
+                a[1] = (i >> 1) & 1;
+                b[0] = j & 1;
+                b[1] = (j >> 1) & 1;
+
+
+
+
+
+VIDEO FOR 2BIT RIPPLE CARRY ADDER:
+
+
+
+
