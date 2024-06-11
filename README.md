@@ -468,75 +468,93 @@ Cout (final carry-out) to Pin PD3
 
 
 
-    *  $  #include <stdio.h>
-     #include <wiringPi.h>
+    #include <ch32v00x.h>
+    #include <debug.h>
+    #include <stdio.h>
 
-     // Function to perform binary addition of two bits and a carry-in
-     void fullAdder(int a, int b, int cin, int *sum, int *cout) {
-    *sum = a ^ b ^ cin;
-    *cout = (a & b) | (b & cin) | (a & cin);
-     }
+     #define LED0_PIN GPIO_Pin_4 // Sum bit 0
+     #define LED1_PIN GPIO_Pin_5 // Sum bit 1
+    #define LED2_PIN GPIO_Pin_6 // Carry bit
+    #define LED_PORT GPIOD
 
-     // Function to perform 2-bit ripple carry addition
-    void rippleCarryAdder2Bit(int a1, int a0, int b1, int b0, int *sum1, int *sum0, int *carryOut) {
-    int carry0, carry1;
-    
-    // Add least significant bits
-    fullAdder(a0, b0, 0, sum0, &carry0);
-    
-    // Add most significant bits with carry from previous addition
-    fullAdder(a1, b1, carry0, sum1, &carry1);
-    
-    // Final carry out
-    *carryOut = carry1;
+     void GPIO_Config(void) {
+    // Enable the clock for GPIOD
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+
+    // Configure PD4, PD5, and PD6 as outputs
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Pin = LED0_PIN | LED1_PIN | LED2_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; // Push-pull output
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(LED_PORT, &GPIO_InitStructure);
     }
 
-     int main() {
-    // Initialize wiringPi and configure GPIO pins
-    wiringPiSetup();
+     void singleBitAdd(int a, int b, int carryIn, int *sum, int *carryOut) {
+    *sum = (a ^ b) ^ carryIn;             // Sum bit
+    *carryOut = (a & b) | (carryIn & (a ^ b)); // Carry bit
+    }
 
-    // Define GPIO pin numbers
-    int a1_pin = PC1;
-    int a0_pin = PC2;
-    int b1_pin = PC3;
-    int b0_pin = PC4;
-    int sum1_pin = PD1;
-    int sum0_pin = PD2;
-    int carryOut_pin = PD3;
+     void twoBitRippleCarryAdder(int a[2], int b[2], int result[3]) {
+    int carry = 0;
+    int sum;
 
-    // Set GPIO pin modes
-    pinMode(a1_pin, INPUT);
-    pinMode(a0_pin, INPUT);
-    pinMode(b1_pin, INPUT);
-    pinMode(b0_pin, INPUT);
-    pinMode(sum1_pin, OUTPUT);
-    pinMode(sum0_pin, OUTPUT);
-    pinMode(carryOut_pin, OUTPUT);
+    // Add the least significant bit (LSB)
+    singleBitAdd(a[0], b[0], carry, &sum, &carry);
+    result[0] = sum;
 
-    // Read input values
-    int a1 = digitalRead(a1_pin);
-    int a0 = digitalRead(a0_pin);
-    int b1 = digitalRead(b1_pin);
-    int b0 = digitalRead(b0_pin);
+    // Add the most significant bit (MSB)
+    singleBitAdd(a[1], b[1], carry, &sum, &carry);
+    result[1] = sum;
 
-    // Variables to store results
-    int sum1, sum0, carryOut;
+    // Carry out from the most significant bit addition
+    result[2] = carry;
+     }
 
-    // Perform addition
-    rippleCarryAdder2Bit(a1, a0, b1, b0, &sum1, &sum0, &carryOut);
+    int main(void) {
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    SystemCoreClockUpdate();
+    Delay_Init();
+    // Initialize the GPIO for the LEDs
+    GPIO_Config();
 
-    // Write output values
-    digitalWrite(sum1_pin, sum1);
-    digitalWrite(sum0_pin, sum0);
-    digitalWrite(carryOut_pin, carryOut);
+    int a[2], b[2], result[3];
 
-    // Print results for verification
-    printf("Sum: %d%d\n", sum1, sum0);
-    printf("Carry Out: %d\n", carryOut);
+    while (1) {
+        // Iterate over all possible combinations of 2-bit numbers
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                // Set inputs a and b
+                a[0] = i & 1;
+                a[1] = (i >> 1) & 1;
+                b[0] = j & 1;
+                b[1] = (j >> 1) & 1;
+
+                // Perform the addition
+                twoBitRippleCarryAdder(a, b, result);
+
+                // Set the LEDs based on the result
+                if (result[0]) {
+                    GPIO_SetBits(LED_PORT, LED0_PIN);
+                } else {
+                    GPIO_ResetBits(LED_PORT, LED0_PIN);
+                }
+
+                if (result[1]) {
+                    GPIO_SetBits(LED_PORT, LED1_PIN);
+                } else {
+                    GPIO_ResetBits(LED_PORT, LED1_PIN);
+                }
+
+                if (result[2]) {
+                    GPIO_SetBits(LED_PORT, LED2_PIN);
+                } else {
+                    GPIO_ResetBits(LED_PORT, LED2_PIN);
+                }
+
+                Delay_Ms(1000); // Delay for visualization
+            }
+        }
+    }
 
     return 0;
     }
-
-
-
-
