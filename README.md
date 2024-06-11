@@ -468,48 +468,75 @@ Cout (final carry-out) to Pin PD3
 
 
 
-    *     $ #include<stdio.h>
+    *  $  #include <stdio.h>
+     #include <wiringPi.h>
 
-     // Function to perform a single-bit addition
-    void singleBitAdd(int a, int b, int carryIn, int *sum, int *carryOut) {
-    *sum = (a ^ b) ^ carryIn;           // Sum bit
-    *carryOut = (a & b) | (carryIn & (a ^ b)); // Carry bit
+     // Function to perform binary addition of two bits and a carry-in
+     void fullAdder(int a, int b, int cin, int *sum, int *cout) {
+    *sum = a ^ b ^ cin;
+    *cout = (a & b) | (b & cin) | (a & cin);
      }
 
-     // Function to perform a 2-bit ripple carry addition
-    void twoBitRippleCarryAdder(int a[2], int b[2], int result[3]) {
-    int carry = 0;
-    int sum;
+     // Function to perform 2-bit ripple carry addition
+    void rippleCarryAdder2Bit(int a1, int a0, int b1, int b0, int *sum1, int *sum0, int *carryOut) {
+    int carry0, carry1;
     
-    // Add the least significant bit (LSB)
-    singleBitAdd(a[pc1], b[pc3], carry, &sum, &carry);
-    result[pd1] = sum;
+    // Add least significant bits
+    fullAdder(a0, b0, 0, sum0, &carry0);
     
-    // Add the most significant bit (MSB)
-    singleBitAdd(a[pc2], b[pc4], carry, &sum, &carry);
-    result[pd2] = sum;
+    // Add most significant bits with carry from previous addition
+    fullAdder(a1, b1, carry0, sum1, &carry1);
     
-    // Carry out from the most significant bit addition
-    result[pd3] = carry;
-     }
+    // Final carry out
+    *carryOut = carry1;
+    }
 
      int main() {
-    int a[2], b[2], result[3];
-    
-    // Input two 2-bit numbers
-    printf("Enter first 2-bit number (as two separate bits, LSB first): ");
-    scanf("%d %d", &a[pc1], &a[pc2]);
-    printf("Enter second 2-bit number (as two separate bits, LSB first): ");
-    scanf("%d %d", &b[pc3], &b[pc4]);
-    
-    // Perform the addition
-    twoBitRippleCarryAdder(a, b, result);
-    
-    // Print the result
-    printf("Sum: %d%d%d\n", result[pd3], result[pd2], result[pd1]);
-    
+    // Initialize wiringPi and configure GPIO pins
+    wiringPiSetup();
+
+    // Define GPIO pin numbers
+    int a1_pin = PC1;
+    int a0_pin = PC2;
+    int b1_pin = PC3;
+    int b0_pin = PC4;
+    int sum1_pin = PD1;
+    int sum0_pin = PD2;
+    int carryOut_pin = PD3;
+
+    // Set GPIO pin modes
+    pinMode(a1_pin, INPUT);
+    pinMode(a0_pin, INPUT);
+    pinMode(b1_pin, INPUT);
+    pinMode(b0_pin, INPUT);
+    pinMode(sum1_pin, OUTPUT);
+    pinMode(sum0_pin, OUTPUT);
+    pinMode(carryOut_pin, OUTPUT);
+
+    // Read input values
+    int a1 = digitalRead(a1_pin);
+    int a0 = digitalRead(a0_pin);
+    int b1 = digitalRead(b1_pin);
+    int b0 = digitalRead(b0_pin);
+
+    // Variables to store results
+    int sum1, sum0, carryOut;
+
+    // Perform addition
+    rippleCarryAdder2Bit(a1, a0, b1, b0, &sum1, &sum0, &carryOut);
+
+    // Write output values
+    digitalWrite(sum1_pin, sum1);
+    digitalWrite(sum0_pin, sum0);
+    digitalWrite(carryOut_pin, carryOut);
+
+    // Print results for verification
+    printf("Sum: %d%d\n", sum1, sum0);
+    printf("Carry Out: %d\n", carryOut);
+
     return 0;
-     }
+    }
+
 
 
 
