@@ -594,7 +594,7 @@ the entire 2bit ripple carry adder runs around this logic
 VIDEO FOR 2BIT RIPPLE CARRY ADDER:
 
 
-
+https://github.com/Prasanna300/VSDSQUADRON-MINI-INTERNSHIP/assets/167746764/ab820d7e-436d-44e6-8705-bddb3a7841d4
 
 
 
